@@ -12,7 +12,7 @@ def words
 end
 
 def random_word
-  puts words.sample
+  puts words.sample #This returns words below 5 and over 12 chars, need to fix.
 end
 
 end
