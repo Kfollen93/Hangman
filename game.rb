@@ -1,13 +1,11 @@
 class Game
 
-def words
-  File.readlines("5desk.txt", chomp: true)
+def dictionary
+  File.readlines("5desk.txt", chomp: true) #chomp is an additional parameter added to readlines. Removes the \n.
 end
 
 def word(min, max)
-  min = 5
-  max = 12
-  choose_word = words.select{ |word| word.length.between?(min, max) }.sample
+  choose_word = dictionary.select{ |word| word.length.between?(min, max) }.sample
   puts choose_word
 end
 
