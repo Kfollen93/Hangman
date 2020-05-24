@@ -1,21 +1,17 @@
 class Game
 
 def words
-  dictionary = File.open('5desk.txt', 'r')
-
-  dictionary.readlines.each do |word|
-    choose_word = word.gsub(/\s+/, '')
-    if choose_word.length.between?(5, 12)
-      choose_word.split("\n")
-    end
-  end
+  File.readlines("5desk.txt", chomp: true)
 end
 
-def random_word
-  puts words.sample #This returns words below 5 and over 12 chars, need to fix.
+def word(min, max)
+  min = 5
+  max = 12
+  choose_word = words.select{ |word| word.length.between?(min, max) }.sample
+  puts choose_word
 end
 
 end
 
 start = Game.new
-start.random_word
+start.word(5, 12)
