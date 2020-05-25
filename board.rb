@@ -6,14 +6,18 @@ end
 
 def input_guess
     puts " "
+    @used_letters = []
     1.upto(6) do |i|
         puts "Turn #{i}: Type in one letter and press 'Enter'."
         @guess = gets.chomp
-        until @guess =~ /\A[a-z]{1}\z/ #Regex for guess as a String.
-        puts 'Your guess must only be one lowercase alphabetic letter.'
+        #Regex for guess as a String. && Checks if guess includes a used letter, if it does, it will loop.
+        #However, I'm not sure what will happen if it's a correct letter that's entered twice yet.
+        until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess) 
+        puts 'Your guess must be one lowercase letter and not used before.'
         @guess = gets.chomp
         end
         check_for_correct_guess #calls method below to check after each guess
+        check_for_wrong_guess #calls method below to check after each guess
         if i >= 6
             puts "You lose. The word was: '#{$chosen_word}'."
         end
@@ -31,8 +35,10 @@ def check_for_correct_guess
 end
 
 def check_for_wrong_guess
-    #if letter not included in array of choose_word
-    #then display on a new line as a separate array and add to it each time
+    unless @slots.include?(@guess) 
+        @used_letters.push(@guess)
+        puts "Used letter(s): #{@used_letters}"
+    end
 end
 
 
