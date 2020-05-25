@@ -7,7 +7,7 @@ end
 def input_guess
     puts " "
     @used_letters = []
-    1.upto(6) do |i|
+    1.upto(6) do |i| #This will need to be changed to IF the letter is included, it doesn't count as a turn
         puts "Turn #{i}: Type in one letter and press 'Enter'."
         @guess = gets.chomp
         #Regex for guess as a String. && Checks if guess includes a used letter, if it does, it will loop.
@@ -26,11 +26,9 @@ def input_guess
 end
 
 def check_for_correct_guess
-    #if correct guess
     @slots.each_with_index do |blank, index|
-        if @slots.include?(@guess) && @slots[index] == '_'
+        if @slots.include?(@guess)
             puts "yes" #then display the character on the slot that matches the index of array
-            #puts @slots[index]
         end
     end
 end
