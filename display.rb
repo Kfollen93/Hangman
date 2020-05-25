@@ -14,9 +14,6 @@ def instructions
     puts " "
 end
 
-def game_board
-end
-
 def remaining_guesses
 end
 
