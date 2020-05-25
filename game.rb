@@ -6,7 +6,7 @@ end
 
 def word(min, max)
   choose_word = dictionary.select{ |word| word.length.between?(min, max) }.sample
-  puts choose_word
+  #puts choose_word   #don't want to display word, but here for testing
 end
 
 def input_guess
@@ -21,6 +21,3 @@ def game_over
 end
 
 end
-
-start = Game.new
-start.word(5, 12)
