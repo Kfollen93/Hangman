@@ -8,11 +8,12 @@ def input_guess
     puts " "
     1.upto(6) do |i|
         puts "Turn #{i}: Type in one letter and press 'Enter'."
-        guess = gets.chomp
-        until guess =~ /\A[a-z]{1}\z/ #Regex for guess as a String.
+        @guess = gets.chomp
+        until @guess =~ /\A[a-z]{1}\z/ #Regex for guess as a String.
         puts 'Your guess must only be one lowercase alphabetic letter.'
-        guess = gets.chomp
+        @guess = gets.chomp
         end
+        check_for_correct_guess #calls method below to check after each guess
         if i >= 6
             puts "You lose. The word was: '#{$chosen_word}'."
         end
@@ -21,6 +22,9 @@ end
 
 def check_for_correct_guess
     #if correct guess
+    if @slots.include?(@guess)
+        puts "yes"
+    end
     #then display the character on the slot that matches the index of array
 end
 
