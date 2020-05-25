@@ -13,6 +13,9 @@ def input_guess
         puts 'Your guess must only be one alphabetic letter.'
         guess = gets.chomp
         end
+        if i >= 6
+            #puts "You lose. The word was #{$choose_word}"
+        end
     end
 end
 
@@ -25,6 +28,7 @@ def wrong_guess
     #if letter not included in array of choose_word
     #then display on a new line as a separate array and add to it each time
 end
+
 def to_s
     @slots.map do |slots|
         print slots || '_ '
