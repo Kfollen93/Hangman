@@ -9,6 +9,12 @@ def word(min, max)
   puts choose_word
 end
 
+def input_guess
+end
+
+def game_over
+end
+
 end
 
 start = Game.new
