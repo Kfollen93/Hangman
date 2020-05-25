@@ -6,5 +6,3 @@ display_game = Display.new
 display_game.instructions
 start = Game.new
 start.word(5, 12)
-#start = Game.new (so Game class/file should have initialize method?)
-
