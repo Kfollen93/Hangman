@@ -12,7 +12,7 @@ def word(min, max)
 end
 
 def game_over
-  if $slots.none? { |str| str == '_ '}
+  if $slots.none? { |str| str == '_'}
     puts "Good job, you won!"
   end
 end
