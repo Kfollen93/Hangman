@@ -7,3 +7,6 @@ display_game = Display.new
 display_game.instructions
 start = Game.new
 start.word(5, 12)
+board = Board.new
+board.to_s
+board.input_guess
