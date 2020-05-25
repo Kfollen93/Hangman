@@ -12,7 +12,7 @@ def input_guess
         @guess = gets.chomp
         #Regex for guess as a String. && Checks if guess includes a used letter, if it does, it will loop.
         #However, I'm not sure what will happen if it's a correct letter that's entered twice yet.
-        until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess) 
+        until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess) #until used letters do not (!) include guess
         puts 'Your guess must be one lowercase letter and not used before.'
         @guess = gets.chomp
         end
