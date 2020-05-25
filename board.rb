@@ -18,6 +18,7 @@ def input_guess
         end
         check_for_correct_guess #calls method below to check after each guess
         check_for_wrong_guess #calls method below to check after each guess
+        map_blanks #calls method
         if i >= 6
             puts "You lose. The word was: '#{$chosen_word}'."
         end
@@ -38,6 +39,7 @@ def check_for_wrong_guess
     unless @slots.include?(@guess) 
         @used_letters.push(@guess)
         puts "Used letter(s): #{@used_letters}"
+        puts " "
     end
 end
 
