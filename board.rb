@@ -1,8 +1,6 @@
 class Board
 
 def initialize
-    #@slots = $choose_word  # _ _ _ appears for each char in choose_word variable
-    #@slots = Array.new(12, nil)
     @@slots = $choose_word.chars
 end
 
