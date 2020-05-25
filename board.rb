@@ -16,6 +16,15 @@ def input_guess
     end
 end
 
+def correct_guess
+    #if correct guess
+    #then display the character on the slot that matches the index of array
+end
+
+def wrong_guess
+    #if letter not included in array of choose_word
+    #then display on a new line as a separate array and add to it each time
+end
 def to_s
     @slots.map do |slots|
         print slots || '_ '
