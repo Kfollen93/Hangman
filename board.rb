@@ -22,10 +22,12 @@ end
 
 def check_for_correct_guess
     #if correct guess
-    if @slots.include?(@guess)
-        puts "yes"
+    @slots.each_with_index do |blank, index|
+        if @slots.include?(@guess) && @slots[index] == '_'
+            puts "yes" #then display the character on the slot that matches the index of array
+            #puts @slots[index]
+        end
     end
-    #then display the character on the slot that matches the index of array
 end
 
 def check_for_wrong_guess
@@ -35,7 +37,7 @@ end
 
 
 def map_blanks 
-    print @slots.map { |blanks| "_ " }
+    print @slots.map { |blanks| '_' }
     puts " "
 end
 
