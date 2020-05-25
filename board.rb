@@ -2,10 +2,12 @@ class Board
 
 def initialize
     #@slots = $choose_word  # _ _ _ appears for each char in choose_word variable
-    @slots = Array.new(12, nil)
+    #@slots = Array.new(12, nil)
+    @@slots = $choose_word.chars
 end
 
 def input_guess
+    puts " "
     1.upto(6) do |i|
         puts "Turn #{i}: Type in one letter and press 'Enter'."
         guess = gets.chomp
@@ -13,9 +15,9 @@ def input_guess
         puts 'Your guess must only be one alphabetic letter.'
         guess = gets.chomp
         end
-        #if i >= 6
-            #puts "You lose. The word was #{$choose_word}"
-        #end
+        if i >= 6
+            puts "You lose. The word was: '#{$choose_word}'."
+        end
     end
 end
 
@@ -29,11 +31,9 @@ def check_for_wrong_guess
     #then display on a new line as a separate array and add to it each time
 end
 
-def to_s
-    @slots.map do |slots|
-        print slots || '_ '
-    end
-    puts " "
+
+def map_blanks 
+    print @@slots.map { |blanks| "_ " }
     puts " "
 end
 
