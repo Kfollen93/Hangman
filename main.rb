@@ -8,5 +8,5 @@ display_game.instructions
 start = Game.new
 start.word(5, 12)
 board = Board.new
-board.to_s
+board.map_blanks
 board.input_guess
