@@ -10,7 +10,7 @@ def instructions
 
     MYHEREDOC
 
-    "Crunching algorithms and setting word...\n".each_char { |c| putc c ; sleep 0.10 }
+    "Crunching algorithms and setting word...\n"#.each_char { |c| putc c ; sleep 0.10 }
     puts " "
 end
 
