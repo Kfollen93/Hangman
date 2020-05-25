@@ -10,16 +10,8 @@ def instructions
 
     MYHEREDOC
 
-    "Crunching algorithms and setting word...\n".each_char { |c| putc c ; sleep 0.10 }
+    "Crunching algorithms and setting word...\n".each_char { |c| putc c ; sleep 0. }
     puts " "
-end
-
-def input_guess
-    guess = gets.chomp
-    until guess =~ /\A[a-z]{1}\z/ #Regex for guess as a String.
-    puts 'Your guess must only be one alphabetic character.'
-    guess = gets.chomp
-    end
 end
 
 def remaining_guesses
