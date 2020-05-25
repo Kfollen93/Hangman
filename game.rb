@@ -6,7 +6,9 @@ end
 
 def word(min, max)
   $choose_word = dictionary.select{ |word| word.length.between?(min, max) }.sample
-  $choose_word.chars #This is an ARRAY broken by each char.
+  $chosen_word = $choose_word.downcase
+  puts $chosen_word #Just for testing.
+  $chosen_word.chars #This is an ARRAY broken by each char.
 end
 
 def game_over
