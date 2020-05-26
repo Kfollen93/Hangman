@@ -10,8 +10,8 @@ class Game
     $chosen_word.chars # This is an ARRAY broken by each char.
   end
 
-  def game_over
-    if $slots.none? { |str| str == '_' }
+  def self.game_over?
+    if @slots.none? { |str| str == '_' }
       puts "Good job, you won!"
     end
   end
