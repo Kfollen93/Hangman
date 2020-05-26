@@ -1,33 +1,11 @@
 class Board
-    def initialize
-      @slots = $chosen_word.chars
-    end
-  
-    def input_guess
-      puts " "
-      @used_letters = []
-      1.upto(6) do |i| # This will need to be changed to IF the letter is correct, it doesn't count as a turn
-        puts "Turn #{i}: Type in one letter and press 'Enter'."
-        @guess = gets.chomp
-        # Regex for guess as a String. && Checks if guess includes a used letter, if it does, it will loop.
-        # However, I'm not sure what will happen if it's a correct letter that's entered twice yet.
-        until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess) # until used letters do not (!) include guess
-          puts 'Your guess must be one lowercase letter and not used before.'
-          @guess = gets.chomp
-        end
-        check_for_correct_guess # calls method below to check after each guess
-        check_for_wrong_guess # calls method below to check after each guess
-        #Game.game_over?
-        map_blanks # calls method
-        if i >= 6
-          puts "You lose. The word was: '#{$chosen_word}'."
-        end
-      end
+    def initialize(word)
+      @slots = word.chars
     end
   
     def check_for_correct_guess
       @slots.each_with_index do |value, index|
-        if @slots.include?(@guess[index])
+        if @slots.include?(@guess[index]) #guess is just a letter, no index to reference
           print @slots[index] = value
         end
       end
@@ -45,5 +23,8 @@ class Board
       print @slots.map { '_' }
       puts ' '
     end
-  end
-  
+end
+
+
+def update #need to refactor the two guess methods into one update method
+end

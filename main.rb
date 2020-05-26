@@ -5,8 +5,10 @@ require_relative 'board.rb'
 
 display_game = Display.new
 display_game.instructions
-start = Game.new
-start.word(5, 12)
+game = Game.new
+game.setup
+game.choose_word
+game.start
 board = Board.new
 board.map_blanks
 board.input_guess
