@@ -28,17 +28,17 @@ class Game
         puts 'Your guess must be one lowercase letter and not used before.'
         @guess = gets.chomp
       end
-      @board.update(@guess)
-      # Game.game_over?
-      map_blanks
+      board.update(@guess)
+      @used_letters.push(@guess)
+      game_over?
       if i >= 6
         puts "You lose. The word was: '#{@chosen_word}'."
       end
     end
   end
 
-  def self.game_over?
-    if @slots.none? { |str| str == '_' }
+  def game_over?
+    if board.full?
       puts "Good job, you won!"
     end
   end

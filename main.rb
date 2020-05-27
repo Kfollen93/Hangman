@@ -7,8 +7,4 @@ display_game = Display.new
 display_game.instructions
 game = Game.new
 game.setup
-game.choose_word
 game.start
-board = Board.new
-board.map_blanks
-board.update
