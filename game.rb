@@ -2,7 +2,7 @@ class Game
   attr_accessor :board
 
   def setup
-    word = choose_word # reminder, this is the method "choose_word"
+  p  word = choose_word # reminder, this is the method "choose_word"
     @word = word # Added this to access it in lose statement.
     @board = Board.new(word)
     @used_letters = []
@@ -27,7 +27,10 @@ class Game
         puts 'Your guess must be one lowercase letter and not used before.'
         @guess = gets.chomp
       end
+      puts " "
       board.update(@guess)
+      puts " "
+      puts " "
       p @used_letters.push(@guess)
       game_over?
       if i >= 6
@@ -36,9 +39,11 @@ class Game
     end
   end
 
+
   def game_over?
     if board.full?
       puts "Good job, you won!"
     end
   end
 end
+

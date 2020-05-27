@@ -3,7 +3,7 @@ class Board
 
   def initialize(word)
     @word = word
-    @slots = Array.new(word.length) { "_" }
+    print @slots = Array.new(word.length) { "_" }
   end
 
   def update(guess)
@@ -15,6 +15,7 @@ class Board
       end
     end
     match
+    print @slots
   end
 
   def full?
