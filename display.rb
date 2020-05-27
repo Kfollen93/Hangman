@@ -1,4 +1,4 @@
-class Display #this might change to a module and rename
+class Display # this might need to change to a module and rename
 
 def instructions
  puts   <<~MYHEREDOC

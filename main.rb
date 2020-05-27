@@ -11,4 +11,4 @@ game.choose_word
 game.start
 board = Board.new
 board.map_blanks
-board.input_guess
+board.update
