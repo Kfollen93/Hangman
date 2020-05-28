@@ -2,7 +2,7 @@ class Game
   attr_accessor :board, :display
 
   def setup
-  p  word = choose_word # reminder, this is the method "choose_word"
+    p word = choose_word # reminder, this is the method "choose_word"
     @word = word # Access to lose statement.
     @board = Board.new(word)
     @used_letters = []
