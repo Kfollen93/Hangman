@@ -1,3 +1,4 @@
+require 'yaml'
 class Game
   attr_accessor :board, :display
 
@@ -23,7 +24,7 @@ class Game
     puts " "
     1.upto(6) do |i|
       break if board.full? == true
-      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'.")
+      puts display.blue("Turn #{i}: Type in one letter and press 'Enter' or\n type 'Save' to save your current game")
       @guess = gets.chomp
       until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
         puts 'Your guess must be one lowercase letter and not used before.'
@@ -46,7 +47,6 @@ class Game
     end
   end
 
-
   def game_over?
     if board.full?
       puts display.green("Good job, you won!")
@@ -55,3 +55,7 @@ class Game
   end
 end
 
+game = Game.new
+output = File.new('save_games.yml', 'w')
+output.puts YAML.dump(game)
+output.close
