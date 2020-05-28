@@ -1,11 +1,12 @@
 class Game
-  attr_accessor :board
+  attr_accessor :board, :display
 
   def setup
   p  word = choose_word # reminder, this is the method "choose_word"
-    @word = word # Added this to access it in lose statement.
+    @word = word # Access to lose statement.
     @board = Board.new(word)
     @used_letters = []
+    @display = Display.new # Access to color methods
   end
 
   def dictionary
@@ -22,7 +23,7 @@ class Game
     puts " "
     1.upto(6) do |i|
       break if board.full? == true
-      puts "Turn #{i}: Type in one letter and press 'Enter'."
+      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'.")
       @guess = gets.chomp
       until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
         puts 'Your guess must be one lowercase letter and not used before.'
@@ -32,13 +33,15 @@ class Game
       board.update(@guess)
       puts " "
       puts " "
-      print "Used letters: #{@used_letters.push(@guess)}\n" 
+      print display.red("Used letters: #{@used_letters.push(@guess)}\n")
+      puts " "
       game_over?
       if @word.include?(@guess)
         redo # Makes the loop start again at the same turn.
       end
       if i >= 6
-        puts "You lose. The word was: #{@word}."
+        puts display.red("You lose. The word was: #{@word}.")
+        puts " "
       end
     end
   end
@@ -46,7 +49,8 @@ class Game
 
   def game_over?
     if board.full?
-      puts "Good job, you won!"
+      puts display.green("Good job, you won!")
+      puts " "
     end
   end
 end

@@ -3,22 +3,19 @@ class Display # this might need to change to a module and rename
 def instructions
  puts   <<~MYHEREDOC
 
-        Classic Hangman, the rules are simple.
+    #{blue('        Classic Hangman, the rules are simple.
 
     Computer sets a word, you guess one letter per turn.
-        You have 6 turns to guess the world correctly.
+        You have 6 turns to guess the word correctly.')}
 
     MYHEREDOC
-
-    "Crunching algorithms and setting word...\n"#.each_char { |c| putc c ; sleep 0.10 }
     puts " "
 end
 
-def colors(number)
-    {
-        '?' => "\e[41m  ?  \e[0m" ' ', # red
-        '!' => "\e[42m  !  \e[0m" ' ', # green
-  }[number]
-  end
+# Color Methods
+def colorize(text, color_code); "\e[#{color_code}m#{text}\e[0m"; end
+def red(text); colorize(text, 31); end
+def green(text); colorize(text, 32); end
+def blue(text); colorize(text, 36); end
 
 end
