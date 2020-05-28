@@ -20,7 +20,7 @@ class Game
 
   def start
     puts " "
-    1.upto(6) do |i| # This will need to be changed to IF the letter is correct, it doesn't count as a turn
+    1.upto(6) do |i|
       break if board.full? == true
       puts "Turn #{i}: Type in one letter and press 'Enter'."
       @guess = gets.chomp
@@ -35,7 +35,7 @@ class Game
       print "Used letters: #{@used_letters.push(@guess)}\n" 
       game_over?
       if @word.include?(@guess)
-        redo
+        redo # Makes the loop start again at the same turn.
       end
       if i >= 6
         puts "You lose. The word was: #{@word}."
