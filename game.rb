@@ -33,8 +33,8 @@ class Game
     1.upto(6) do |i|
       break if board.full? == true
 
-      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'. \n
-      Type 'Save' to save your current game or 'Exit' to quit at anytime.")
+      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'.
+Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       @guess = gets.chomp.downcase
       save_or_exit
       @guess == 'save' ? redo :
