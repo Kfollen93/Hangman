@@ -13,5 +13,6 @@ module Serializer
       end
 
     def load_game
+        file = YAML.safe_load(File.read("saves/save_game.yaml"))
     end
 end

@@ -8,7 +8,12 @@ class Game
   def setup
     p word = choose_word # reminder, this is the method "choose_word"
     @word = word # Access to lose statement.
-    @board = Board.new(word)
+    puts "Type 'Load' if you would like to load a game, or press any key to start new."
+    input = gets.chomp.downcase
+    if input == "load"
+      load_game
+    else @board = Board.new(word)
+    end
     @used_letters = []
     @display = Display.new # Access to color methods
   end
@@ -33,8 +38,6 @@ class Game
         save_game
         puts "Game Saved"
         redo
-      elsif @guess == "load"
-      # load method here
       elsif @guess == "exit"
         exit
       else # Part of saving game IF statement.
