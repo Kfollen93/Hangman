@@ -1,4 +1,4 @@
-require 'yaml'
+require_relative 'serializer'
 
 class Game
   attr_accessor :board, :display
@@ -27,6 +27,10 @@ class Game
       break if board.full? == true
       puts display.blue("Turn #{i}: Type in one letter and press 'Enter' or\ntype 'Save' to save your current game or 'Exit' to quit.")
       @guess = gets.chomp
+      if @guess == "Save" # Added IF statement for saving game.
+        puts "Game Saved"
+        redo
+      else # Part of saving game IF statement.
       until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
         puts 'Your guess must be one lowercase letter and not used before.'
         @guess = gets.chomp
@@ -47,6 +51,7 @@ class Game
       end
     end
   end
+end # Added IF statement for saving game.
 
   def game_over?
     if board.full?
@@ -55,21 +60,16 @@ class Game
     end
   end
 
-  def yaml_bundle
-    game_data = { word => choose_word,
-                  @word => word,
-                  @board => Board.new(word),
-                  @used_letters => [],
-                  chosen_word => word.downcase,
-                  @guess => gets.chomp }
-  end
-
   def save_game
-
+    game_data = {
+                  word => @word,
+                  Board.new(word) => @board,
+                  [] => @used_letters,
+                  word.downcase => chosen_word }
   end
 
   def load_game
-    
+
   end
 
 end
