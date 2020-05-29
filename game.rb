@@ -1,4 +1,3 @@
-require 'yaml'
 class Game
   attr_accessor :board, :display
 
@@ -54,8 +53,3 @@ class Game
     end
   end
 end
-
-game = Game.new
-output = File.new('save_games.yml', 'w')
-output.puts YAML.dump(game)
-output.close
