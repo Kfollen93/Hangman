@@ -1,7 +1,9 @@
-require_relative 'serializer'
+require_relative 'serializer.rb'
+require 'yaml'
 
 class Game
   attr_accessor :board, :display
+  include Serializer
 
   def setup
     p word = choose_word # reminder, this is the method "choose_word"
@@ -28,6 +30,7 @@ class Game
       puts display.blue("Turn #{i}: Type in one letter and press 'Enter' or\ntype 'Save' to save your current game or 'Exit' to quit.")
       @guess = gets.chomp
       if @guess == "Save" # Added IF statement for saving game.
+        save_game
         puts "Game Saved"
         redo
       else # Part of saving game IF statement.
@@ -59,17 +62,4 @@ end # Added IF statement for saving game.
       puts " "
     end
   end
-
-  def save_game
-    game_data = {
-                  word => @word,
-                  Board.new(word) => @board,
-                  [] => @used_letters,
-                  word.downcase => chosen_word }
-  end
-
-  def load_game
-
-  end
-
 end

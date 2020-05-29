@@ -1,9 +1,17 @@
-require 'yaml'
-class Serializer
-    def serialize(x)
-        Pathname('save_games.yml').exist? append_data(x) : new_file_create(x)
+module Serializer
+    def save_game
+        Dir.mkdir 'saves' unless Dir.exist? 'saves'
+        @filename = "save_game.yaml"
+        File.open("saves/#{@filename}", 'w') { |file| file.write save_to_yaml }
     end
 
-    def deserialize
+    def save_to_yaml
+        YAML.dump(
+            [] => @used_letters,
+            word => @word
+        )
+      end
+
+    def load_game
     end
 end
