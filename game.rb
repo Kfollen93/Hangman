@@ -27,12 +27,16 @@ class Game
     puts " "
     1.upto(6) do |i|
       break if board.full? == true
-      puts display.blue("Turn #{i}: Type in one letter and press 'Enter' or\ntype 'Save' to save your current game or 'Exit' to quit.")
-      @guess = gets.chomp
-      if @guess == "Save" # Added IF statement for saving game.
+      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'. \nType 'Save' to save your current game or 'Exit' to quit at anytime.")
+      @guess = gets.chomp.downcase
+      if @guess == "save" # Added IF statement for saving game.
         save_game
         puts "Game Saved"
         redo
+      elsif @guess == "load"
+      # load method here
+      elsif @guess == "exit"
+        exit
       else # Part of saving game IF statement.
       until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
         puts 'Your guess must be one lowercase letter and not used before.'
@@ -62,4 +66,5 @@ end # Added IF statement for saving game.
       puts " "
     end
   end
+
 end

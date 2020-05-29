@@ -6,9 +6,9 @@ module Serializer
     end
 
     def save_to_yaml
-        YAML.dump(
-            [] => @used_letters,
-            word => @word
+        YAML.dump({
+                    [] => @used_letters,
+                    'word' => @word }
         )
       end
 
