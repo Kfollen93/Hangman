@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
+# Display board and update board
 class Board
   attr_reader :word
 
   def initialize(word)
     @word = word
-    print @slots = Array.new(word.length) { "_" }
+    print @slots = Array.new(word.length) { '_' }
   end
 
   def update(guess)
@@ -19,6 +22,6 @@ class Board
   end
 
   def full?
-    @slots.join("") == @word
+    @slots.join('') == @word
   end
 end
