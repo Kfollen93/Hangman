@@ -47,9 +47,7 @@ Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       puts ''
       print display.red("Used letters: #{@used_letters.push(@guess)}\n")
       game_over?
-      if @word.include?(@guess)
-        redo # Start again at the same turn.
-      end
+      @word.include?(@guess) ? redo : next
       if i >= 6
         puts display.red("You lose. The word was: #{@word}.\n")
       end
