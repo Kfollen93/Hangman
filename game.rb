@@ -1,3 +1,5 @@
+require 'yaml'
+
 class Game
   attr_accessor :board, :display
 
@@ -52,4 +54,22 @@ class Game
       puts " "
     end
   end
+
+  def yaml_bundle
+    game_data = { word => choose_word,
+                  @word => word,
+                  @board => Board.new(word),
+                  @used_letters => [],
+                  chosen_word => word.downcase,
+                  @guess => gets.chomp }
+  end
+
+  def save_game
+
+  end
+
+  def load_game
+    
+  end
+
 end

@@ -1,6 +1,7 @@
+require 'yaml'
 class Serializer
     def serialize
-        
+
     end
 
     def deserialize
