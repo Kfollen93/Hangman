@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'serializer.rb'
 require 'yaml'
 
+# Sets up the game and runs it in its entirety.
 class Game
   attr_accessor :board, :display
   include Serializer
@@ -8,66 +11,63 @@ class Game
   def setup
     p word = choose_word # reminder, this is the method "choose_word"
     @word = word # Access to lose statement.
-    puts "Type 'Load' if you would like to load a game, or press any key to start new."
+    puts "Type 'Load' to load a game, or press any key to start new."
     input = gets.chomp.downcase
-    if input == "load"
-      load_game
-    else @board = Board.new(word)
-    end
+    input == 'load' ? load_game : @board = Board.new(word) # if T no board made
     @used_letters = []
     @display = Display.new # Access to color methods
   end
 
   def dictionary
-    File.readlines("5desk.txt", chomp: true) # chomp is an additional parameter to readlines. Removes the \n.
+    File.readlines('5desk.txt', chomp: true) # chomp removes the \n.
   end
 
   def choose_word
-    word = dictionary.select { |word| word.length.between?(5, 12) }.sample
+    word = dictionary.select { |words| words.length.between?(5, 12) }.sample
     chosen_word = word.downcase
     chosen_word
   end
 
   def start
-    puts " "
+    puts ''
     1.upto(6) do |i|
       break if board.full? == true
-      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'. \nType 'Save' to save your current game or 'Exit' to quit at anytime.")
+
+      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'. \n
+      Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       @guess = gets.chomp.downcase
-      if @guess == "save" # Added IF statement for saving game.
-        save_game
-        puts "Game Saved"
-        redo
-      elsif @guess == "exit"
-        exit
-      else # Part of saving game IF statement.
-      until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
-        puts 'Your guess must be one lowercase letter and not used before.'
-        @guess = gets.chomp
-      end
-      puts " "
+      save_or_exit
+      @guess == 'save' ? redo :
+        until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
+          puts 'Your guess must be one lowercase letter and not used before.'
+          @guess = gets.chomp
+        end
+      puts ''
       board.update(@guess)
-      puts " "
-      puts " "
+      puts ''
       print display.red("Used letters: #{@used_letters.push(@guess)}\n")
-      puts " "
       game_over?
       if @word.include?(@guess)
-        redo # Makes the loop start again at the same turn.
+        redo # Start again at the same turn.
       end
       if i >= 6
-        puts display.red("You lose. The word was: #{@word}.")
-        puts " "
+        puts display.red("You lose. The word was: #{@word}.\n")
       end
     end
   end
-end # Added IF statement for saving game.
+end
 
-  def game_over?
-    if board.full?
-      puts display.green("Good job, you won!")
-      puts " "
-    end
+def game_over?
+  return unless board.full?
+
+  puts display.green("Good job, you won!\n")
+end
+
+def save_or_exit
+  if @guess == 'save'
+    save_game
+    puts 'Game Saved'
+  elsif @guess == 'exit'
+    exit
   end
-
 end
