@@ -11,11 +11,11 @@ class Game
   def setup
     p word = choose_word # reminder, this is the method "choose_word"
     @word = word # Access to lose statement.
+    @used_letters = []
+    @display = Display.new # Access to color methods
     puts "Type 'Load' to load a game, or press any key to start new."
     input = gets.chomp.downcase
     input == 'load' ? load_game : @board = Board.new(word) # if T no board made
-    @used_letters = []
-    @display = Display.new # Access to color methods
   end
 
   def dictionary
