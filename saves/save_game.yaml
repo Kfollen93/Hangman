@@ -1,35 +1,22 @@
 ---
 []:
-- w
-- e
-- p
+- s
 - g
-- n
-? !ruby/object:Board
-  word: extortioner
+- p
+- f
+- r
+- z
+board: !ruby/object:Board
+  word: profanation
   slots:
+  - p
+  - r
+  - _
+  - f
   - _
   - _
   - _
   - _
   - _
   - _
-  - _
-  - _
-  - _
-  - _
-  - _
-: !ruby/object:Board
-  word: extortioner
-  slots:
-  - e
-  - _
-  - _
-  - _
-  - _
-  - _
-  - _
-  - _
-  - n
-  - e
   - _
