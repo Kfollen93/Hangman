@@ -1,8 +1,10 @@
 # frozen_string_literal: true
+require 'yaml'
 
 # Display board and update board
 class Board
   attr_reader :word
+  include Serializer
 
   def initialize(word)
     @word = word

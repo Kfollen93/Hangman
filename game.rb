@@ -69,7 +69,8 @@ def save_or_exit
   def regex_guess_check
     until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
       puts 'Your guess must be one lowercase letter and not used before.'
-      @guess = gets.chomp
+      @guess = gets.chomp.downcase
+      save_or_exit
     end
   end
 end

@@ -1,4 +1,35 @@
 ---
 []:
-- d
-word: dahlia
+- w
+- e
+- p
+- g
+- n
+? !ruby/object:Board
+  word: extortioner
+  slots:
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+: !ruby/object:Board
+  word: extortioner
+  slots:
+  - e
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - n
+  - e
+  - _
