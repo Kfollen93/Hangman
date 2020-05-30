@@ -38,16 +38,13 @@ Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       @guess = gets.chomp.downcase
       save_or_exit
       @guess == 'save' ? redo :
-        until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
-          puts 'Your guess must be one lowercase letter and not used before.'
-          @guess = gets.chomp
-        end
+      regex_guess_check
       puts ''
       board.update(@guess)
       puts ''
       print display.red("Used letters: #{@used_letters.push(@guess)}\n")
       game_over?
-      @word.include?(@guess) ? redo : next
+      redo if @word.include?(@guess)
       if i >= 6
         puts display.red("You lose. The word was: #{@word}.\n")
       end
@@ -67,5 +64,12 @@ def save_or_exit
     puts 'Game Saved'
   elsif @guess == 'exit'
     exit
+  end
+
+  def regex_guess_check
+    until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
+      puts 'Your guess must be one lowercase letter and not used before.'
+      @guess = gets.chomp
+    end
   end
 end
