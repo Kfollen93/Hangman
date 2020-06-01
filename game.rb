@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'serializer.rb'
+
 require 'yaml'
 
 # Sets up the game and runs it in its entirety.

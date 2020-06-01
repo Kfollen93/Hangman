@@ -1,20 +1,19 @@
 ---
 []:
-- w
-- g
-- b
-- p
 - f
+- b
+- r
+- e
 board: !ruby/object:Board
-  word: painfully
+  word: relevant
   slots:
-  - p
+  - r
+  - e
+  - _
+  - e
   - _
   - _
   - _
-  - f
   - _
-  - _
-  - _
-  - _
-guesses_remain: 3
+guesses_remain: 4
+updateboard: "--- \n"

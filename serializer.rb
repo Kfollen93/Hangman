@@ -19,7 +19,7 @@ module Serializer
   def load_game
     file = YAML.load(File.read('saves/save_game.yaml'))
     @word = file["board"].word
-    print @used_letters = file[[]]
+    @used_letters = file[[]]
     @guesses_remain = file['guesses_remain']
     @board = file["board"]
   end
