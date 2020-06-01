@@ -46,7 +46,7 @@ Type 'Save' to save your current game or 'Exit' to quit.")
       @word.include?(@guess) ? redo : @guesses_remain -= 1
       if @guesses_remain <= 0
         puts display.red("You lose. The word was: #{@word}.\n")
-        exit
+        restart_game?
       end
     end
   end
@@ -56,7 +56,20 @@ def game_over?
   return unless board.full?
 
   puts display.green("Good job, you won!\n")
-  exit
+  restart_game?
+end
+
+def restart_game?
+puts 'Would you like to play again? Press "Y" to restart, or any key to exit.'
+response = gets.chomp.downcase
+  if response == "y"
+      restart = Game.new
+      restart.setup
+      restart.start
+  else
+    puts "Thanks for playing!"
+    exit
+  end
 end
 
 def nil_check
