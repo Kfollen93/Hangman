@@ -15,7 +15,7 @@ class Game
     @display = Display.new # Access to color methods
     puts "Type 'Load' to load a game, or press any key to start new."
     input = gets.chomp.downcase
-    input == 'load' ? load_game : @board = Board.new(word) # if T no board made
+    input == 'load' ? load_game : @board = Board.new(word)
   end
 
   def dictionary
@@ -39,9 +39,7 @@ Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       save_or_exit
       @guess == 'save' ? redo :
       regex_guess_check
-      puts ''
       board.update(@guess)
-      puts ''
       print display.red("Used letters: #{@used_letters.push(@guess)}\n")
       game_over?
       redo if @word.include?(@guess)
@@ -71,6 +69,7 @@ def save_or_exit
       puts 'Your guess must be one lowercase letter and not used before.'
       @guess = gets.chomp.downcase
       save_or_exit
+      puts ''
     end
   end
 end

@@ -21,6 +21,7 @@ class Board
     end
     match
     print @slots
+    puts ''
   end
 
   def full?
