@@ -14,7 +14,7 @@ class Game
     @used_letters = []
     @display = Display.new # Access to color methods
     @guesses_remain = 6
-    puts "Type 'Load' to load a game, or press any key to start new."
+    puts "Press any key to start a new game, or type 'Load' to load your previous save."
     input = gets.chomp.downcase
     input == 'load' ? load_game : @board = Board.new(word)
   end
