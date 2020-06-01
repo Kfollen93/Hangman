@@ -2,10 +2,11 @@ class Display
   def instructions
     puts <<~MYHEREDOC
 
-      #{blue('        Classic Hangman, the rules are simple.
+      #{blue('            Classic Hangman, the rules are simple.
 
       Computer sets a word, you guess one letter per turn.
-          You have 6 turns to guess the word correctly.')}
+          You have 6 turns to guess the word correctly.
+      A turn will only be used if the guess is incorrect.')}
 
     MYHEREDOC
     puts " "
