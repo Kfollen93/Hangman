@@ -34,15 +34,23 @@ class Game
     puts ''
     1.upto(6) do |i|
       break if board.full? == true
-
+      
+      board.update(@guess)
+      if @guess != nil && @guess != "save" && @guess != "load"
+        @used_letters.push(@guess)
+      end
+      print display.red("Used letters: #{@used_letters}\n")
+      game_over?
+      
+      
       puts display.blue("Guesses remaning: #{@guesses_remain}: Type in one letter and press 'Enter'.
 Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       @guess = gets.chomp.downcase
       save_or_exit
       @guess == 'save' ? redo : regex_guess_check
-      board.update(@guess)
-      print display.red("Used letters: #{@used_letters.push(@guess)}\n")
-      game_over?
+      #board.update(@guess)
+      #print display.red("Used letters: #{@used_letters.push(@guess)}\n")
+      #game_over?
       @word.include?(@guess) ? redo : @guesses_remain -= 1
       if @guesses_remain <= 0
         puts display.red("You lose. The word was: #{@word}.\n")
@@ -56,6 +64,7 @@ def game_over?
   return unless board.full?
 
   puts display.green("Good job, you won!\n")
+  exit
 end
 
 def save_or_exit

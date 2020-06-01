@@ -1,19 +1,20 @@
 ---
 []:
-- f
-- b
-- r
-- e
+- w
+- h
+- g
+- u
+- t
+- n
 board: !ruby/object:Board
-  word: relevant
+  word: untanned
   slots:
-  - r
-  - e
+  - u
+  - n
+  - t
   - _
-  - e
+  - n
+  - n
   - _
   - _
-  - _
-  - _
-guesses_remain: 4
-updateboard: "--- \n"
+guesses_remain: 3

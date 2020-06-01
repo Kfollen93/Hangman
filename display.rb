@@ -9,7 +9,7 @@ class Display
 
     MYHEREDOC
     puts " "
-    sleep(1)
+    sleep(0.5)
   end
 
   # Color Methods

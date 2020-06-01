@@ -6,7 +6,7 @@ class Board
 
   def initialize(word)
     @word = word
-    print @slots = Array.new(word.length) { '_' }
+    @slots = Array.new(word.length) { '_' }
   end
 
   def update(guess)
