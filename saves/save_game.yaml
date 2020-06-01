@@ -1,18 +1,18 @@
 ---
 []:
-- g
-- r
+- z
+- v
+- s
+- w
+- f
 board: !ruby/object:Board
-  word: ciceronian
+  word: savoury
   slots:
+  - s
+  - _
+  - v
   - _
   - _
   - _
   - _
-  - r
-  - _
-  - _
-  - _
-  - _
-  - _
-guesses_remain: 5
+guesses_remain: 3
