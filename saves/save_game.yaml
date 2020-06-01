@@ -1,16 +1,18 @@
 ---
 []:
-- w
-- v
-- b
+- g
+- r
 board: !ruby/object:Board
-  word: melinda
+  word: ciceronian
   slots:
   - _
   - _
   - _
   - _
+  - r
   - _
   - _
   - _
-guesses_remain: 3
+  - _
+  - _
+guesses_remain: 5

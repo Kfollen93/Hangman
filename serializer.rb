@@ -11,16 +11,16 @@ module Serializer
   def save_to_yaml
     YAML.dump({
                 [] => @used_letters,
-                "board" => @board,
+                'board' => @board,
                 'guesses_remain' => @guesses_remain
               })
   end
 
   def load_game
     file = YAML.load(File.read('saves/save_game.yaml'))
-    @word = file["board"].word
+    @word = file['board'].word
     @used_letters = file[[]]
     @guesses_remain = file['guesses_remain']
-    @board = file["board"]
+    @board = file['board']
   end
 end

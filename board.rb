@@ -10,14 +10,11 @@ class Board
   end
 
   def update(guess)
-    match = false
     @word.chars.each_with_index do |value, index|
       if value == guess
         @slots[index] = guess
-        match = true
       end
     end
-    match
     print @slots
     puts ''
   end

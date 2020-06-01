@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 require_relative 'serializer.rb'
-
 require 'yaml'
 
-# Sets up the game and runs it in its entirety.
+# Sets up the game and runs the start method.
 class Game
   attr_accessor :board, :display
   include Serializer
 
   def setup
-    p word = choose_word # reminder, this is the method "choose_word"
-    @word = word # Access to lose statement.
+    word = choose_word
+    @word = word
     @used_letters = []
     @display = Display.new # Access to color methods
     @guesses_remain = 6
@@ -32,25 +31,18 @@ class Game
 
   def start
     puts ''
-    1.upto(6) do |i|
+    1.upto(6) do
       break if board.full? == true
-      
+
       board.update(@guess)
-      if @guess != nil && @guess != "save" && @guess != "load"
-        @used_letters.push(@guess)
-      end
+      nil_check
       print display.red("Used letters: #{@used_letters}\n")
       game_over?
-      
-      
-      puts display.blue("Guesses remaning: #{@guesses_remain}: Type in one letter and press 'Enter'.
-Type 'Save' to save your current game or 'Exit' to quit at anytime.")
+      puts display.blue("Guesses remaning: #{@guesses_remain}: Type one letter & press 'Enter'.
+Type 'Save' to save your current game or 'Exit' to quit.")
       @guess = gets.chomp.downcase
       save_or_exit
       @guess == 'save' ? redo : regex_guess_check
-      #board.update(@guess)
-      #print display.red("Used letters: #{@used_letters.push(@guess)}\n")
-      #game_over?
       @word.include?(@guess) ? redo : @guesses_remain -= 1
       if @guesses_remain <= 0
         puts display.red("You lose. The word was: #{@word}.\n")
@@ -67,6 +59,12 @@ def game_over?
   exit
 end
 
+def nil_check
+  if !@guess.nil? && @guess != 'save' && @guess != 'load'
+    @used_letters.push(@guess)
+  end
+end
+
 def save_or_exit
   if @guess == 'save'
     save_game
@@ -74,13 +72,13 @@ def save_or_exit
   elsif @guess == 'exit'
     exit
   end
+end
 
-  def regex_guess_check
-    until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
-      puts 'Your guess must be one lowercase letter and not used before.'
-      @guess = gets.chomp.downcase
-      save_or_exit
-      puts ''
-    end
+def regex_guess_check
+  until @guess =~ /\A[a-z]{1}\z/ && !@used_letters.include?(@guess)
+    puts 'Your guess must be one lowercase letter and not used before.'
+    @guess = gets.chomp.downcase
+    save_or_exit
+    puts ''
   end
 end
