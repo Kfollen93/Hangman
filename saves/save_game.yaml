@@ -1,0 +1,20 @@
+---
+[]:
+- w
+- g
+- b
+- p
+- f
+board: !ruby/object:Board
+  word: painfully
+  slots:
+  - p
+  - _
+  - _
+  - _
+  - f
+  - _
+  - _
+  - _
+  - _
+guesses_remain: 3

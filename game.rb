@@ -13,6 +13,7 @@ class Game
     @word = word # Access to lose statement.
     @used_letters = []
     @display = Display.new # Access to color methods
+    @guesses_remain = 6
     puts "Type 'Load' to load a game, or press any key to start new."
     input = gets.chomp.downcase
     input == 'load' ? load_game : @board = Board.new(word)
@@ -33,18 +34,18 @@ class Game
     1.upto(6) do |i|
       break if board.full? == true
 
-      puts display.blue("Turn #{i}: Type in one letter and press 'Enter'.
+      puts display.blue("Guesses remaning: #{@guesses_remain}: Type in one letter and press 'Enter'.
 Type 'Save' to save your current game or 'Exit' to quit at anytime.")
       @guess = gets.chomp.downcase
       save_or_exit
-      @guess == 'save' ? redo :
-      regex_guess_check
+      @guess == 'save' ? redo : regex_guess_check
       board.update(@guess)
       print display.red("Used letters: #{@used_letters.push(@guess)}\n")
       game_over?
-      redo if @word.include?(@guess)
-      if i >= 6
+      @word.include?(@guess) ? redo : @guesses_remain -= 1
+      if @guesses_remain <= 0
         puts display.red("You lose. The word was: #{@word}.\n")
+        exit
       end
     end
   end
