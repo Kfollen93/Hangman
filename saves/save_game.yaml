@@ -1,20 +1,16 @@
 ---
 []:
 - w
-- h
-- g
-- u
-- t
-- n
+- v
+- b
 board: !ruby/object:Board
-  word: untanned
+  word: melinda
   slots:
-  - u
-  - n
-  - t
   - _
-  - n
-  - n
+  - _
+  - _
+  - _
+  - _
   - _
   - _
 guesses_remain: 3
